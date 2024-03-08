@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDS™</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Orbitron:wght@400..900&family=Source+Code+Pro&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="video-background">
+        <iframe 
+            src="https://www.youtube.com/embed/8VsvdCaSyaQ?autoplay=1&loop=1&controls=0&mute=1&playlist=8VsvdCaSyaQ"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+        ></iframe>
+    </div>
+    
+    
+    <audio id="bgmid" loop>
+        <source src="{{ url_for('static', filename='bgm.mp3') }}">
+      </audio>
+      <script>
+        window.addEventListener( 'click', () => { document.getElementById("bgmid").play(); });
+      </script>
+      
+   
+
+    <header>
+        <h1> DETECTING THREAT </h1>
+        <div class="lds-hourglass"></div> <!-- Rotating processing icon -->
+    </header>
+
+    <div class="container">
+        <div class="row">
+            {% for item in image_data %}
+<div class="col-md-4">
+    <div class="card mb-4">
+        <img src="{{ url_for('get_image', filename=item.filename) }}" class="card-img-top" alt="Person Image">
+        <div class="card-body">
+            <h5 class="card-title">OBJECT - ID : PERSON</h5>
+            <p class="card-text" id="intruder-status-{{ loop.index }}">STATUS - ID : </p>
+            <p class="card-text">TIME - ID : {{ item['timestamp'] }}</p>
+        </div>
+    </div>
+</div>
+<script>
+    const currentHour{{ loop.index }} = new Date().getHours();
+    const intruderStatusElement{{ loop.index }} = document.getElementById('intruder-status-{{ loop.index }}');
+
+    if (currentHour{{ loop.index }} >= 21 || currentHour{{ loop.index }} < 15) {
+        intruderStatusElement{{ loop.index }}.textContent += 'Intruder Detected';
+        intruderStatusElement{{ loop.index }}.classList.add('intruder'); // Add blinking effect
+    } else {
+        intruderStatusElement{{ loop.index }}.textContent += 'Daytime Humanoid';
+        intruderStatusElement{{ loop.index }}.classList.add('daytime'); // Add green color
+    }
+</script>
+{% endfor %}
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

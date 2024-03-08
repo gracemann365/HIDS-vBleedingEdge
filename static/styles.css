@@ -1,0 +1,179 @@
+body {
+    font-family: 'Orbitron', sans-serif;
+    background-color: #000;
+    color: #0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding-top: 50px; /* Adjust as needed */
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 20px; /* Adjust the right padding as needed */
+    background: #000;
+    color: #0f0;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #0f0 3px solid;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+header h1 {
+    float: left;
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    font-size: 55px;
+    animation: blink 2s infinite;
+    bottom: -15%;
+}
+
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typewriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}
+
+.card {
+    background: #000000cd;
+    color: #0f0;
+    border-radius: 15px;
+    margin: 15px;
+    transition: box-shadow 0.5s ease;
+}
+.card-text {
+    font-size: 14px; /* Adjust the font size as needed */
+}
+.card:hover {
+    box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0, 0 0 40px #0f0;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 15px 15px 0 0;
+}
+
+/* Define the pulsating animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Apply the animation to the hovered image */
+.card-img-top:hover {
+    animation: pulse 1s infinite alternate;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 50px;
+    background-color: rgba(0, 0, 0, 0.486);
+    padding-bottom: 50px; /* Adjust as needed */
+}
+
+@keyframes blinkers {
+    0% { color: red; }
+    50% { color: transparent; }
+    100% { color: red; }
+}
+
+.intruder {
+    animation: blinkers 0.5s infinite;
+}
+
+.daytime {
+    color: rgb(0, 26, 255);
+}
+
+.lds-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-left: 73%;
+    margin-top: -10px; /* Move it up */
+    margin-bottom: 0.75%;
+   
+}
+.lds-hourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 32px solid #f70404;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+    0% {
+      transform: rotate(0);
+      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+      transform: rotate(900deg);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+}

@@ -20,9 +20,6 @@ HIDS is a locally deployed Home Intrusion Detection System designed to enhance h
       - Google Workspace 2FA adds an extra layer of protection by requiring users to verify their identity through a secondary method, such as a mobile device or authenticator app.
       - This ensures that only authorized users can access the email alerting system, preventing unauthorized access and enhancing overall system security.
 
-  
-## Key Features:
-
 - **Flask Web Interface:**
   - Offers a user-friendly web interface powered by Flask for easy monitoring of detected intrusions and system status.
     - Utilizes the lightweight and flexible architecture of Flask, a micro web framework for Python, to create dynamic web applications.
